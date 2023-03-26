@@ -395,6 +395,22 @@ impl pallet_hotfix_sufficients::Config for Runtime {
 	type WeightInfo = pallet_hotfix_sufficients::weights::SubstrateWeight<Runtime>;
 }
 
+/// Configure the pallet-template in pallets/template.
+impl pallet_template::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+}
+
+/// Configure the pallet-insecure-randomness-collective-flip, used in pallet-collectibles
+impl pallet_insecure_randomness_collective_flip::Config for Runtime {}
+
+/// Configure the pallet-collectibles in pallets/collectibles.
+impl pallet_collectibles::Config for Runtime {
+    type RuntimeEvent = RuntimeEvent;
+    type Currency = Balances;
+    type CollectionRandomness = RandomnessCollectiveFlip;
+    type MaximumOwned = ConstU32<100>;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -415,6 +431,10 @@ construct_runtime!(
 		DynamicFee: pallet_dynamic_fee,
 		BaseFee: pallet_base_fee,
 		HotfixSufficients: pallet_hotfix_sufficients,
+		// Include the custom logic from the pallet-template in the runtime.
+		TemplateModule: pallet_template,
+		Collectibles: pallet_collectibles,
+		RandomnessCollectiveFlip: pallet_insecure_randomness_collective_flip,
 	}
 );
 

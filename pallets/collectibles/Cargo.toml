@@ -1,0 +1,21 @@
+[package]
+name = "pallet-collectibles"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+frame-support = { workspace = true }
+frame-system = { workspace = true }
+codec = { package = "parity-scale-codec", workspace = true }
+scale-info = { workspace = true }
+
+[features]
+default = ["std"]
+std = [
+  "frame-support/std",
+  "frame-system/std",
+  "codec/std",
+  "scale-info/std",
+]
