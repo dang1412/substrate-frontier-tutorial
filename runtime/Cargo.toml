@@ -37,6 +37,7 @@ frame-system-rpc-runtime-api = { workspace = true }
 pallet-aura = { workspace = true }
 pallet-balances = { workspace = true }
 pallet-grandpa = { workspace = true }
+pallet-insecure-randomness-collective-flip = { workspace = true }
 pallet-sudo = { workspace = true }
 pallet-timestamp = { workspace = true }
 pallet-transaction-payment = { workspace = true }
@@ -61,7 +62,7 @@ pallet-hotfix-sufficients = { workspace = true }
 # Local Dependencies
 pallet-collectibles = { default-features = false, path = "../pallets/collectibles" }
 pallet-template = { version = "4.0.0-dev", default-features = false, path = "../pallets/template" }
-pallet-insecure-randomness-collective-flip = { workspace = true }
+pallet-evm-precompile-collectibles = { default-features = false, path = "../precompiles/collectibles" }
 
 [build-dependencies]
 substrate-wasm-builder = { workspace = true, optional = true }
@@ -119,6 +120,7 @@ std = [
 	# Local
 	"pallet-collectibles/std",
 	"pallet-template/std",
+	"pallet-evm-precompile-collectibles/std",
 ]
 runtime-benchmarks = [
 	"frame-benchmarking/runtime-benchmarks",
