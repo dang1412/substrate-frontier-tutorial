@@ -31,4 +31,25 @@ where
 
 		Ok(())
     }
+
+	#[precompile::public("transfer(address,uint128)")]
+	fn transfer(
+		handle: &mut impl PrecompileHandle,
+		to: Address,
+		unique_id: u128,
+	) -> EvmResult {
+		let origin = Runtime::AddressMapping::into_account_id(handle.context().caller);
+		let to = Runtime::AddressMapping::into_account_id(to.into());
+
+		let unique_id: [u8; 16] = unique_id.to_be_bytes().into();
+
+		let call = pallet_collectibles::Call::<Runtime>::transfer {
+			to,
+			unique_id
+		};
+		// Dispatch call (if enough gas).
+		RuntimeHelper::<Runtime>::try_dispatch(handle, Some(origin).into(), call)?;
+
+		Ok(())
+	}
 }
