@@ -1,0 +1,1 @@
+[{"inputs":[],"name":"create_collectible","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint128","name":"unique_id","type":"uint128"}],"name":"transfer","outputs":[],"stateMutability":"nonpayable","type":"function"}]

@@ -3,13 +3,16 @@
   "version": "0.0.0",
   "description": "frontier tutorial tests",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.2",
     "@types/node": "^18.15.11",
+    "ts-jest": "^29.1.0",
     "typescript": "^5.0.3"
   },
   "dependencies": {
+    "@polkadot/api": "^10.7.3",
     "ethers": "^6.2.3"
   }
 }
